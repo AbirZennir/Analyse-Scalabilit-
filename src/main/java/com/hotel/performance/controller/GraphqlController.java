@@ -35,22 +35,4 @@ public class GraphqlController {
         reservation.setPreferences(reservationInput.preferences());
         return hotelService.createReservation(reservation, clientId, chambreId);
     }
-
-    @MutationMapping
-    public Reservation updateReservation(@Argument Long id, @Argument ReservationInput reservationInput) {
-        Reservation reservation = new Reservation();
-        reservation.setDateDebut(reservationInput.dateDebut());
-        reservation.setDateFin(reservationInput.dateFin());
-        reservation.setPreferences(reservationInput.preferences());
-        return hotelService.updateReservation(id, reservation);
-    }
-
-    @MutationMapping
-    public Boolean deleteReservation(@Argument Long id) {
-        hotelService.deleteReservation(id);
-        return true;
-    }
-
-    record ReservationInput(String dateDebut, String dateFin, String preferences) {
-    }
 }
