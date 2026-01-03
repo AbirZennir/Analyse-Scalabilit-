@@ -1,19 +1,17 @@
-package com.hotel.performance.model;
+package com.example.hotel.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import java.math.BigDecimal;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "chambres")
 public class Chambre {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String type;
-    private Double prix;
-    private Boolean disponible;
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  private String type;
+  private BigDecimal prix;
+  private boolean disponible = true;
+
+  
 }
