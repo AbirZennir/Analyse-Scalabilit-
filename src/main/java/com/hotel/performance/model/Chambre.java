@@ -13,5 +13,4 @@ public class Chambre {
   private BigDecimal prix;
   private boolean disponible = true;
 
-  
 }
