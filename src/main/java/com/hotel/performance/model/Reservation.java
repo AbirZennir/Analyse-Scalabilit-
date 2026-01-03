@@ -1,28 +1,27 @@
-package com.hotel.performance.model;
+package com.example.hotel.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import java.time.LocalDate;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "reservations")
 public class Reservation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+  @ManyToOne(optional = false) @JoinColumn(name = "client_id")
+  private Client client;
 
-    @ManyToOne
-    @JoinColumn(name = "chambre_id")
-    private Chambre chambre;
+  @ManyToOne(optional = false) @JoinColumn(name = "chambre_id")
+  private Chambre chambre;
 
-    private String dateDebut;
-    private String dateFin;
-    private String preferences;
+  @Column(name = "date_debut", nullable = false)
+  private LocalDate dateDebut;
+
+  @Column(name = "date_fin", nullable = false)
+  private LocalDate dateFin;
+
+  @Column(columnDefinition = "TEXT")
+  private String preferences;
+
 }
