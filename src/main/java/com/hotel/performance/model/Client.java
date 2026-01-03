@@ -1,20 +1,22 @@
-package com.hotel.performance.model;
+package com.example.hotel.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "clients")
 public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nom;
-    private String prenom;
-    private String email;
-    private String telephone;
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @NotBlank private String nom;
+  @NotBlank private String prenom;
+
+  @Email @Column(unique = true, nullable = false)
+  private String email;
+
+  private String telephone;
+
+ 
 }
